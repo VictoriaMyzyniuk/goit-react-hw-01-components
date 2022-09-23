@@ -1,21 +1,26 @@
 import { PropTypes } from 'prop-types';
 import { StatisticCardItem } from 'components/StatisticCardItem/StatisticCardItem';
-export const StatisticCard = ({ data, title }) => {
+import {
+  StatisticWrapper,
+  StatisticList,
+  SectionHeader,
+} from 'components/Statistics/Statistics.styled';
+export const StatisticCard = ({ stats, title }) => {
   return (
-    <section className="statistics">
-      {title && <h2 className="title">{title}</h2>}
-      <ul className="stat-list">
-        {data.map(({ id, label, percentage }) => (
+    <StatisticWrapper>
+      {title && <SectionHeader>{title}</SectionHeader>}
+      <StatisticList>
+        {stats.map(({ id, label, percentage }) => (
           <StatisticCardItem key={id} label={label} percentage={percentage} />
         ))}
-      </ul>
-    </section>
+      </StatisticList>
+    </StatisticWrapper>
   );
 };
 
 StatisticCard.propTypes = {
   title: PropTypes.string,
-  data: PropTypes.arrayOf(
+  stats: PropTypes.arrayOf(
     PropTypes.exact({
       label: PropTypes.string.isRequired,
       percentage: PropTypes.number.isRequired,

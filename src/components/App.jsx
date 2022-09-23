@@ -4,9 +4,12 @@ import { FriendList } from 'components/FriendList/FriendList';
 import friends from 'components/FriendList/friends.json';
 import { StatisticCard } from 'components/Statistics/StatisticCard';
 import data from 'components/Statistics/data.json';
+import { TransactionTable } from 'components/TransactionHistory/TransactionTable';
+import transactions from 'components/TransactionHistory/transactions.json';
+import { Container } from 'components/App.styled';
 export const App = () => {
   return (
-    <div>
+    <Container>
       <UserProfile
         username={user.username}
         tag={user.tag}
@@ -14,8 +17,9 @@ export const App = () => {
         avatar={user.avatar}
         stats={user.stats}
       />
-      <StatisticCard data={data} title="Upload Stats" />
+      <StatisticCard stats={data} title="Upload Stats" />
       <FriendList friends={friends} />
-    </div>
+      <TransactionTable items={transactions} />
+    </Container>
   );
 };
